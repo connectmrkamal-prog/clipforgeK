@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClipForge: turn long videos and live streams into short clips</title>
+<meta name="description" content="Paste a link or upload a video. ClipForge finds the best moments and cuts captioned vertical clips, even while a stream is live.">
+<link rel="icon" href="/brand/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14213d;--paper:#f7f8fb;--mint:#7ae0b8;--coral:#ff6b5b;--grey:#5b6475;--line:#dfe3ec}
+*{box-sizing:border-box;margin:0}
+body{font-family:'Bricolage Grotesque',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0;gap:16px}
+nav .links{display:flex;gap:22px;align-items:center;font-size:.95rem}
+nav .links a{text-decoration:none}
+.logo{font-weight:800;font-size:1.3rem;text-decoration:none}
+.logo b{color:var(--coral)}
+.btn{display:inline-block;background:var(--ink);color:#fff;padding:12px 22px;border-radius:999px;text-decoration:none;font-weight:600}
+.btn.alt{background:var(--mint);color:var(--ink)}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--coral);outline-offset:2px}
+.hero{padding:56px 0 32px;max-width:780px}
+h1{font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.04;font-weight:800;letter-spacing:-.02em}
+.hero p{font-size:1.2rem;color:var(--grey);margin:20px 0 28px;max-width:580px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.paste{display:flex;gap:10px;background:#fff;border:2px solid var(--line);border-radius:999px;padding:8px 8px 8px 22px;max-width:620px;align-items:center;margin-top:8px}
+.paste span{flex:1;color:var(--grey);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.timeline{background:var(--ink);border-radius:20px;padding:22px;margin:40px 0 8px}
+.track{display:flex;gap:4px;height:54px}
+.track span{flex:1;background:#2a3a63;border-radius:6px}
+.track span.hit{background:var(--mint);animation:pulse 2.4s ease-in-out 1}
+.track span.hit.b{background:var(--coral)}
+.timeline small{display:block;color:#aeb8d4;margin-top:12px;font-size:.9rem}
+@keyframes pulse{0%{transform:scaleY(.4)}60%{transform:scaleY(1.2)}100%{transform:scaleY(1)}}
+section{padding:56px 0}
+h2{font-size:2rem;font-weight:800;margin-bottom:28px;letter-spacing:-.01em}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px}
+.feat div{border-top:3px solid var(--ink);padding-top:14px}
+.feat div:nth-child(3n+2){border-color:var(--mint)}
+.feat div:nth-child(3n){border-color:var(--coral)}
+.feat h3{font-size:1.15rem;margin-bottom:6px}
+.feat p{color:var(--grey)}
+.steps{list-style:none;padding:0;counter-reset:s;display:grid;gap:18px}
+.steps li{counter-increment:s;padding-left:52px;position:relative;font-size:1.1rem}
+.steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:36px;height:36px;border-radius:50%;background:var(--mint);display:grid;place-items:center;font-weight:800}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+.plan.pop{background:var(--ink);color:#fff}
+.plan h3{margin-bottom:6px}
+.plan ul{padding-left:18px;opacity:.9}
+details{border-top:1px solid var(--line);padding:14px 0}
+summary{cursor:pointer;font-weight:600}
+details p{color:var(--grey);margin-top:8px}
+footer{padding:36px 0;color:var(--grey);border-top:1px solid var(--line);font-size:.9rem}
+footer a{margin-right:16px}
+@media(prefers-reduced-motion:reduce){.track span.hit{animation:none}}
+@media(max-width:560px){nav .links a:not(.btn){display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+  <a class="logo" href="/">Clip<b>Forge</b></a>
+  <div class="links">
+    <a href="#features">Features</a><a href="#how">How it works</a><a href="#faq">FAQ</a>
+    <a href="/login">Log in</a><a class="btn" href="/signup">Start free</a>
+  </div>
+</nav>
+
+<header class="hero" id="open">
+  <h1>One long video in. A week of short clips out.</h1>
+  <p>Paste a YouTube, Twitch or Kick link, or upload a file. ClipForge finds the strongest moments and cuts them to vertical clips with word-by-word captions.</p>
+  <div class="paste"><span>https://youtube.com/watch?v=...</span><a class="btn alt" href="/signup">Find clips</a></div>
+</header>
+
+<div class="timeline" aria-label="A long video with highlighted moments">
+  <div class="track" id="track"></div>
+  <small>60-minute stream: 3 moments found</small>
+</div>
+
+<section id="features">
+  <h2>What you get</h2>
+  <div class="feat">
+    <div><h3>Clips from any link</h3><p>YouTube, Twitch, Kick or your own file. The audio is transcribed on your own machine.</p></div>
+    <div><h3>Live clipping</h3><p>Records a stream and clips highlights while it is still running, using loudness, chat and the transcript.</p></div>
+    <div><h3>Captions and hooks</h3><p>Word-by-word captions in three styles, sized for phones, with a hook line at the start.</p></div>
+    <div><h3>Your own AI</h3><p>Use Gemini, Groq, OpenAI, Claude or a local model. No key at all also works.</p></div>
+    <div><h3>Workspaces per creator</h3><p>Separate channels, clip settings and an activity log for each creator you clip.</p></div>
+    <div><h3>Auto-posting</h3><p>Queue finished clips for YouTube Shorts and Instagram Reels, with daily limits.</p></div>
+  </div>
+</section>
+
+<section id="how">
+  <h2>How it works</h2>
+  <ol class="steps">
+    <li>Paste a link or upload a video.</li>
+    <li>ClipForge transcribes it and asks the AI which moments will hold attention.</li>
+    <li>Review the captioned 9:16 clips, then download or post them.</li>
+  </ol>
+</section>
+
+<section id="live">
+  <h2>Plans</h2>
+  <div class="plans">
+    <div class="plan"><h3>Free</h3><ul><li>Run it on your own computer</li><li>Bring your own AI key</li><li>No sign-in needed locally</li></ul></div>
+    <div class="plan pop"><h3>Hosted</h3><ul><li>Sign in from anywhere</li><li>Your clips saved online</li><li>Set your own prices later</li></ul></div>
+  </div>
+</section>
+
+<section id="faq">
+  <h2>Questions</h2>
+  <details><summary>Which videos can I clip?</summary><p>Only videos you made or have permission to use. You are responsible for the rights to what you download, clip and post.</p></details>
+  <details><summary>Do I need an AI key?</summary><p>No. Without one, clips are picked by loudness. With a key, the AI picks better moments and writes titles.</p></details>
+  <details><summary>Does my audio leave my machine?</summary><p>Speech to text runs on the server you run ClipForge on. Only the transcript text goes to the AI service you choose.</p></details>
+</section>
+</div>
+
+<footer><div class="wrap">
+  <a href="/terms">Terms</a><a href="/privacy">Privacy</a><a href="/acceptable-use">Acceptable use</a>
+  <p style="margin-top:12px">ClipForge is built on the open source PeakCut project (MIT licence).</p>
+</div></footer>
+
+<script>
+var t=document.getElementById('track'),hits={6:'',17:'b',31:''};
+for(var i=0;i<40;i++){var s=document.createElement('span');if(i in hits){s.className='hit '+hits[i]}t.appendChild(s)}
+</script>
+</body>
+</html>
